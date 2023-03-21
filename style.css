@@ -319,42 +319,46 @@ header {
 
 /* Intro Section */
 
-.intro {
-    height: 100vh;
-}
 
 .intro__img {
     box-shadow: var(--bs);
 }
 
-@media (min-width: 600px) {
+.intro {
+    display: grid;
+    width: min-content;
+    margin: 0 auto;
+    grid-column-gap: 1em;
+    grid-template-areas:
+        "img title"
+        "img subtitle";
+    grid-template-columns: min-content max-content;
+}
+
+.intro__img {
+    grid-area: img;
+    min-width: 250px;
+    position: relative;
+    z-index: 2;
+}
+
+.section__subtitle--intro {
+    align-self: start;
+    grid-column: -1 / 1;
+    grid-row: 2;
+    text-align: right;
+    position: relative;
+    left: -1.5em;
+    width: calc(100% + 1.5em);
+}
+
+@media screen and (max-width: 600px) {
     .intro {
-        display: grid;
-        width: min-content;
-        margin: 0 auto;
-        grid-column-gap: 1em;
-        grid-template-areas:
-            "img title"
-            "img subtitle";
-        grid-template-columns: min-content max-content;
+        display: flex;
+        flex-direction: column;
+        padding-top: 1em;
     }
-
-    .intro__img {
-        grid-area: img;
-        min-width: 350px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .section__subtitle--intro {
-        align-self: start;
-        grid-column: -1 / 1;
-        grid-row: 2;
-        text-align: right;
-        position: relative;
-        left: -1.5em;
-        width: calc(100% + 1.5em);
-    }
+    
 }
 
 /* Services */
@@ -422,49 +426,65 @@ header {
 }
 
 /* About Me */
-.about-me {
-    max-width: 1300px;
-    margin: 0 auto;
-    height: 100vh;
-}
-
-.about-me__img {
-    box-shadow: var(--bs);
-}
 
 .about-me__body p {
     margin: 0 1em 1em 0;
     font-size: 1.2em;
 }
 
-@media (min-width: 600px) {
+.about-me {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
+        "title img"
+        "subtitle img"
+        "text img";
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section__title--about {
+    grid-area: title;
+}
+
+.section__subtitle--about {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    position: relative;
+    left: -1em;
+    width: calc(100% + 2em);
+    padding-left: 1em;
+    padding-right: calc(200px + 4em);
+}
+
+.about-me__img {
+    grid-area: img;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--bs);
+}
+
+.about-me__body {
+    grid-area: text;
+}
+
+@media screen and (max-width: 600px) {
     .about-me {
-        display: grid;
-        grid-template-columns: 1fr 200px;
-        grid-template-areas:
+        grid-template-areas: 
             "title img"
             "subtitle img"
-            "text img";
-    }
- 
-    .section__title--about {
-        grid-area: title;
+            "text text";
+    } 
+
+}
+
+@media screen and (max-width: 450px) {
+    .about-me {
+        display: block;
     }
 
     .section__subtitle--about {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        position: relative;
-        left: -1em;
-        width: calc(100% + 2em);
-        padding-left: 1em;
-        padding-right: calc(200px + 4em);
-    }
-
-    .about-me__img {
-        grid-area: img;
-        position: relative;
-        z-index: 2;
+        padding-right: 0;
     }
 }
 
@@ -483,15 +503,20 @@ header {
 }
 
 .portfolio {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+    gap: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px;
 }
 
 .portfolio__item {
     background: var(--clr-accent);
     overflow: hidden;
-    height: 200px;
+    height: 400px;
+    width: 400px;
 }
 
 .portfolio__img {
@@ -532,6 +557,13 @@ header {
 
 .portfolio__item a {
     text-decoration: none;
+}
+
+@media screen and (max-width: 950px) {
+    .portfolio__item {
+        width: 300px;
+        height: 300px;
+    }
 }
 
 /* Footer */
@@ -582,6 +614,20 @@ header {
 
 .social-list__link {
     padding: .5em
+}
+
+@media screen and (max-width: 500px) {
+    .footer {
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+        padding: 1em 0;
+    }
+
+    .social-list {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 /* Portfolio Item Individual */

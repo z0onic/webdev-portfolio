@@ -1,8 +1,9 @@
 const navToggle = document.querySelector('.nav-toggle')
 const navLinks = document.querySelectorAll('.nav__link')
-const title = document.querySelectorAll('.portfolio__item_title')
-const thumb = document.querySelectorAll('.portfolio__item')
+const aboutImg = document.querySelector('.about-me__img')
 
+
+//navagation stuff
 navToggle.addEventListener('click', () => {
     document.body.classList.toggle('nav-open')
 })
@@ -13,14 +14,11 @@ navLinks.forEach(link => {
     })
 })
 
-// thumb.addEventListener('mouseenter', () => {
-//     setTimeout(() => {
-//         title.style.opacity = '1'
-//     }, 600)
-// })
+//about me pic
+//init
+screen.width < 600 ? aboutImg.src = './img/fullshot.jpg' : aboutImg.src = './img/fullshot-2.jpg'
+//on change
+window.addEventListener("resize", e => {
+    screen.width < 600 ? aboutImg.src = './img/fullshot.jpg' : aboutImg.src = './img/fullshot-2.jpg'
+})
 
-// thumb.addEventListener('mouseleave', () => {
-//     setTimeout(() => {
-//         title.style.opacity = '0'
-//     }, 1000)
-// })

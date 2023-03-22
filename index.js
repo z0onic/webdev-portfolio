@@ -4,13 +4,18 @@ const aboutImg = document.querySelector('.about-me__img')
 
 
 //navagation stuff
+
 navToggle.addEventListener('click', () => {
     document.body.classList.toggle('nav-open')
+    document.body.classList.toggle('noscroll')
 })
+
+
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         document.body.classList.remove('nav-open')
+        document.body.classList.remove('noscroll')
     })
 })
 

@@ -317,6 +317,13 @@ header {
     bottom: 6px;
 }
 
+.noscroll {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
 /* Intro Section */
 
 
@@ -606,10 +613,6 @@ header {
     /* justify-content: center; */
     /* margin: 2em 0 0; */
     /* padding: 0; */
-}
-
-.social-list__items {
-    /* margin: 0 .5em; */
 }
 
 .social-list__link {

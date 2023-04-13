@@ -182,6 +182,10 @@ h3 {
     font-size: var(--fs-h3);
 }
 
+.bold {
+    font-weight: 600;
+}
+
 .section__title {
     margin-bottom: .25em;
 }
